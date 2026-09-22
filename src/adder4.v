@@ -13,14 +13,12 @@ module adder4(
 	      output [4:0] result);
    
 // add your code here -- you must use four instances of the full adder "fulladd", defined below
-	fulladd addc0
-	(.x(a[0]),.y(b[0]),.cin(1`b0),.sum(result[0]),.cout(cout0));
-	fulladd addc1
-	(.x(a[1]),.y(b[1]),.cin(1`b0),.sum(result[1]),.cout(cout1));
-	fulladd addc2
-	(.x(a[2]),.y(b[2]),.cin(1`b0),.sum(result[2]),.cout(cout2));
-	fulladd addc3
-	(.x(a[3]),.y(b[3]),.cin(1`b0),.sum(result[3]),.cout(cout3));
+	wire [2:0] carry;
+	
+	fulladd v1 (a[0],b[0],1'b0,result[0],carry[0]);
+	fulladd v1 (a[1],b[1],0,result[1],carry[1]);
+	fulladd v1 (a[2],b[2],1,result[2],carry[2]);
+	fulladd v1 (a[3],b[3],2,result[3],result[4]);
    
 endmodule
 
